@@ -5,9 +5,11 @@ import com.loopers.support.error.CoreException;
 import com.loopers.support.error.ErrorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.Getter;
 
 @Entity
 @Table(name = "example")
+@Getter
 public class ExampleModel extends BaseEntity {
 
     private String name;
@@ -40,5 +42,13 @@ public class ExampleModel extends BaseEntity {
             throw new CoreException(ErrorType.BAD_REQUEST, "설명은 비어있을 수 없습니다.");
         }
         this.description = newDescription;
+    }
+
+    public void updateName(String updatedName) {
+        this.name = updatedName;
+    }
+
+    public void updateDescription(String description) {
+        this.description = description;
     }
 }
